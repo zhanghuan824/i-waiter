@@ -1,6 +1,5 @@
 package com.paipai.server.domain;
 
-import java.util.Calendar;
 import java.util.List;
 
 import com.paipai.server.domain.basic.Location;

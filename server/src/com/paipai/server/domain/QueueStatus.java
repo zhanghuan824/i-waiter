@@ -10,8 +10,12 @@ public class QueueStatus {
 		this.restaurant = restaurant;
 	}
 	
-	public int getAverageVelocity() {
-		return 0;
+	public float getHistoricalVelocity() {
+		return 0.0f;
+	}
+	
+	public float getHistoricalVelocity(TableCategory category) {
+		return 0.0f;
 	}
 	
 	public float getVelocity() {
@@ -20,5 +24,9 @@ public class QueueStatus {
 	
 	public float getVelocity(TableCategory category) {
 		return 0.0f;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
 	}
 }
