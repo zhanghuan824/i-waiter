@@ -12,6 +12,7 @@ public class Reservation {
 	private Customer customer;
 	private int seatsRequired;
 	private Date startTime;
+	private Date createTime;
 	private int globalOrder;
 	private ReservationStatusEnum status;
 	
@@ -103,5 +104,8 @@ public class Reservation {
 	public void setStatus(ReservationStatusEnum status) {
 		this.status = status;
 	}
-	
+
+	public Date getCreateTime() {
+		return createTime;
+	}	
 }
