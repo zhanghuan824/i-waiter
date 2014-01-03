@@ -1,5 +1,6 @@
 package com.paipai.server.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import com.paipai.server.domain.table.TableCategory;
@@ -12,12 +13,46 @@ public class Reservation {
 	private int seatsRequired;
 	private Date startTime;
 	private int globalOrder;
+	private ReservationStatusEnum status;
 	
-	public Reservation(Customer customer, Restaurant restaurant, Date time, int seats) {
+	public Reservation(Customer customer, Restaurant restaurant, int seats) {
 		this.customer = customer;
 		this.restaurant = restaurant;
-		this.startTime = time;
 		this.seatsRequired = seats;
+		this.setStatus(ReservationStatusEnum.Pending);
+	}
+	
+	public void start() {
+		TableCategory tc = this.restaurant.getTableStrategy().getTableCategory(seatsRequired);
+		this.restaurant.getQueue().add(tc, this);
+		this.status = ReservationStatusEnum.Inline;
+		globalOrder = restaurant.getCallNumber();
+		restaurant.addCallNumber();
+		this.startTime = Calendar.getInstance().getTime();
+	}
+	
+	public void close() throws Exception {
+		TableCategory tc = this.restaurant.getTableStrategy().getTableCategory(seatsRequired);
+		Reservation reservationToRemove = this.restaurant.getQueue().remove(tc, this);
+		if(reservationToRemove == null) {
+			this.status = ReservationStatusEnum.Invalid;
+			String msg = String.format("No reservation {0} to close", id);			
+			throw new Exception(msg);
+		} else {
+			this.status = ReservationStatusEnum.Dining;
+		}
+	}
+	
+	public void quit() throws Exception {
+		TableCategory tc = this.restaurant.getTableStrategy().getTableCategory(seatsRequired);
+		Reservation reservationToRemove = this.restaurant.getQueue().remove(tc, this);
+		if(reservationToRemove == null) {
+			this.status = ReservationStatusEnum.Invalid;
+			String msg = String.format("No reservation {0} to quit", id);			
+			throw new Exception(msg);
+		} else {
+			this.status = ReservationStatusEnum.Quit;
+		}
 	}
 	
 	public TableCategory getTableCategory() {
@@ -59,6 +94,14 @@ public class Reservation {
 	}
 	public void setGlobalOrder(int globalOrder) {
 		this.globalOrder = globalOrder;
+	}
+
+	public ReservationStatusEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(ReservationStatusEnum status) {
+		this.status = status;
 	}
 	
 }

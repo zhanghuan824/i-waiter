@@ -1,5 +1,6 @@
 package com.paipai.server.domain;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.paipai.server.domain.basic.Location;
@@ -18,7 +19,9 @@ public class Restaurant {
 	private String mobileNumber;
 	private String contactPerson;
 	private PaipaiQueue queue;
+	private QueueStatus queueStatus;
 	private TableCategoryStrategy tableStrategy;
+	private int callNumber = 0; //Ã¿Ìì½ÐºÅ
 	
 	public String getName() {
 		return name;
@@ -80,5 +83,26 @@ public class Restaurant {
 	public void setTableStrategy(TableCategoryStrategy tableStrategy) {
 		this.tableStrategy = tableStrategy;
 	}
+	public int getCallNumber() {
+		return callNumber;
+	}
+	public synchronized void addCallNumber() {
+		callNumber++;
+	}
+	public synchronized void clearCallNumber() {
+		callNumber = 0;
+	}
 	
+	public ReservationStatus requestReservation(Customer customer, int diners) {
+		Reservation reservation = new Reservation(customer, this, diners);
+		reservation.start();
+		ReservationStatus rs = new ReservationStatus(reservation);
+		return rs;
+	}
+	public QueueStatus getQueueStatus() {
+		return queueStatus;
+	}
+	public void setQueueStatus(QueueStatus queueStatus) {
+		this.queueStatus = queueStatus;
+	}
 }
