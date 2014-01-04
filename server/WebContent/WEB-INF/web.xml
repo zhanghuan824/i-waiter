@@ -17,7 +17,7 @@
   	</servlet-class>
   	<init-param>
   		<param-name>com.sun.jersey.config.property.packages</param-name>
-  		<param-value>com.paipai.server.service.rest</param-value>
+  		<param-value>com.paipai.server.service.rest.mock</param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
   </servlet>

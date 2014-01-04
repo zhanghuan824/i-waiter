@@ -2,7 +2,7 @@ package com.paipai.server.domain.basic;
 
 public class Location {
 	
-	private int id;
+	private long id;
 	private String province;
 	private String city;
 	private String district;	
@@ -10,7 +10,7 @@ public class Location {
 	private float longitude = 0.0f;
 	private float latitude = 0.0f;
 	
-	public Location(int id, 
+	public Location(long id, 
 			String province,
 			String city,
 			String district,
@@ -78,12 +78,12 @@ public class Location {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 }

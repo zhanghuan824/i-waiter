@@ -21,6 +21,7 @@ public class Restaurant {
 	private QueueStatus queueStatus;
 	private TableCategoryStrategy tableStrategy;
 	private int callNumber = 0; //Ã¿Ìì½ÐºÅ
+	private String barCode;
 	
 	public String getName() {
 		return name;
@@ -103,5 +104,11 @@ public class Restaurant {
 	}
 	public void setQueueStatus(QueueStatus queueStatus) {
 		this.queueStatus = queueStatus;
+	}
+	public String getBarCode() {
+		return barCode;
+	}
+	public void setBarCode(String barCode) {
+		this.barCode = barCode;
 	}
 }
