@@ -47,6 +47,7 @@ create table Restaurant
 	name varchar(20) not null default '',
 	location int not null,
 	address varchar(32) not null default '',
+	barcode varchar(128) not null default '',
 	type int,
 	telphone char(15),
 	mobile char(11),
