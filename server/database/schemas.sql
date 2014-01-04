@@ -1,7 +1,14 @@
+use mysql;
+go
+
 create database if not exists paipai character set 'utf8' collate 'utf8_general_ci';
 
 use paipai;
 go
+
+use doctor;
+go
+select * from 
 
 create table Location
 (
@@ -46,6 +53,7 @@ create table Restaurant
 	id bigint not null primary key auto_increment,
 	name varchar(20) not null default '',
 	location int not null,
+	address varchar(32) not null default '',
 	type int,
 	telphone char(15),
 	mobile char(11),
