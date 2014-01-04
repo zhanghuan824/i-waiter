@@ -1,14 +1,7 @@
-use mysql;
-go
-
 create database if not exists paipai character set 'utf8' collate 'utf8_general_ci';
 
 use paipai;
 go
-
-use doctor;
-go
-select * from 
 
 create table Location
 (
