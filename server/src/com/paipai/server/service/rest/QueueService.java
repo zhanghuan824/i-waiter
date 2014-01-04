@@ -27,9 +27,9 @@ public class QueueService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/reservation/{user}/{dinner_count}/{bar_code}")
+	@Path("/reservation/{user}/{diner_count}/{bar_code}")
 	public ReservationStatus requestReservation(@PathParam("user") long id, 
-			@PathParam("dinner_count") int count, 
+			@PathParam("diner_count") int count, 
 			@PathParam("bar_code") String code) {
 		return null;
 	}
