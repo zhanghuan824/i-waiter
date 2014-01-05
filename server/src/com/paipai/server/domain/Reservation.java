@@ -3,8 +3,11 @@ package com.paipai.server.domain;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.table.TableCategory;
 
+@XmlRootElement
 public class Reservation {
 
 	private long id;
@@ -15,6 +18,8 @@ public class Reservation {
 	private Date createTime;
 	private int globalOrder;
 	private ReservationStatusEnum status;
+	
+	public Reservation() {}
 	
 	public Reservation(Customer customer, Restaurant restaurant, int seats) {
 		this.customer = customer;

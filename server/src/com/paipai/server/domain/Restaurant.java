@@ -2,11 +2,15 @@ package com.paipai.server.domain;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.basic.Location;
 import com.paipai.server.domain.queue.PaipaiQueue;
 import com.paipai.server.domain.table.Table;
 import com.paipai.server.domain.table.TableCategoryStrategy;
 
+@XmlRootElement
 public class Restaurant {
 
 	private long id;
@@ -22,6 +26,8 @@ public class Restaurant {
 	private TableCategoryStrategy tableStrategy;
 	private int callNumber = 0; //Ã¿Ìì½ÐºÅ
 	private String barCode;
+	
+	public Restaurant() {}
 	
 	public String getName() {
 		return name;
@@ -47,6 +53,8 @@ public class Restaurant {
 	public void setType(RestaurantType type) {
 		this.type = type;
 	}
+	
+	@XmlElement(name="tables")
 	public List<Table> getTables() {
 		return tables;
 	}

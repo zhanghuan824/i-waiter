@@ -1,9 +1,14 @@
 package com.paipai.server.domain.table;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Table {
 
 	private TableCategory category;
 	private int amount;
+	
+	public Table() {}
 	
 	public Table(TableCategory category, int amount) {
 		this.category = category;

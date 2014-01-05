@@ -1,11 +1,16 @@
 package com.paipai.server.domain.table;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class TableCategoryStrategy {
 
 	public int PeerCount = 2;
 	public int SmallCount = 4;
 	public int MediumCount = 6;
 	public int LargeCount = 10;
+	
+	public TableCategoryStrategy() {}
 	
 	public TableCategoryStrategy(int peerCount, int smallCount, int mediumCount, int largeCount) {
 		this.PeerCount = peerCount;

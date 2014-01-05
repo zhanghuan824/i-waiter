@@ -1,10 +1,15 @@
 package com.paipai.server.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.table.TableCategory;
 
+@XmlRootElement
 public class QueueStatus {
 
 	private Restaurant restaurant;
+	
+	public QueueStatus() {}
 	
 	public QueueStatus(Restaurant restaurant) {
 		this.restaurant = restaurant;

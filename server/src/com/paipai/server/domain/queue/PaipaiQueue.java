@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Queue;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.Reservation;
 import com.paipai.server.domain.table.TableCategory;
 
+@XmlRootElement
 public class PaipaiQueue {
 	private HashMap<TableCategory, InternalQueue> internalQueues;
 	
@@ -40,6 +44,7 @@ public class PaipaiQueue {
 		}
 	}
 
+	@XmlElement(name="internalQueues")
 	public HashMap<TableCategory, InternalQueue> getInternalQueues() {
 		return internalQueues;
 	}

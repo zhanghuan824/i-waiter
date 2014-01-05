@@ -35,8 +35,8 @@ public class QueueServiceMock {
 	 * @return 返回空表示申请失败，需要重试；否则返回队列情况，预估时间等等
 	 */
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/reservation/{user}/{diner_count}/{bar_code}")
 	public ReservationStatus requestReservation(@PathParam("user") long id, 
 			@PathParam("diner_count") int count, 
@@ -87,7 +87,7 @@ public class QueueServiceMock {
 	 * @return
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/reservation/{id}")
 	public Reservation getReservation(@PathParam("id") long id) {
 		Customer customer = new Customer();
@@ -137,7 +137,7 @@ public class QueueServiceMock {
 	 * @return 所有申请
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/reservation/restaurant/{id}")
 	public List<Reservation> getReservationsByRestaurantId(@PathParam("id") long restaurantId) {
 		List<Reservation> reservationList = new ArrayList<Reservation>();
@@ -190,7 +190,7 @@ public class QueueServiceMock {
 	 * @return 排队申请的状态信息
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/reservation/{id}/status")
 	public ReservationStatus getReservationStatus(@PathParam("id") long reservationId) {
 		Customer customer = new Customer();
@@ -241,7 +241,7 @@ public class QueueServiceMock {
 	 * @return
 	 */
 	@PUT
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/reservation/{id}/diners/{dinerCount}")
 	public ReservationStatus changeDinerCount(@PathParam("id") long reservationId, 
 			@PathParam("dinerCount") int count) {

@@ -1,8 +1,12 @@
 package com.paipai.server.domain;
 
 import java.util.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.basic.Gender;
 
+@XmlRootElement
 public class Customer {
 
 	private long id;
@@ -12,6 +16,8 @@ public class Customer {
 	private Gender gender;
 	private Date birthday;
 	private String mobilePhoneNumber;
+	
+	public Customer() {}
 	
 	public long getId() {
 		return id;

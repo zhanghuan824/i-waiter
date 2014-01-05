@@ -1,5 +1,8 @@
 package com.paipai.server.domain.basic;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Location {
 	
 	private long id;
@@ -9,6 +12,8 @@ public class Location {
 	private String address; //œÍœ∏µÿ÷∑
 	private float longitude = 0.0f;
 	private float latitude = 0.0f;
+	
+	public Location() {}
 	
 	public Location(long id, 
 			String province,

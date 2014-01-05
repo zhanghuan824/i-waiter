@@ -1,14 +1,19 @@
 package com.paipai.server.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.paipai.server.domain.queue.PaipaiQueue;
 import com.paipai.server.domain.table.TableCategory;
 
+@XmlRootElement
 public class ReservationStatus {
 
 	private Reservation reservation;
 	private int minuteForcast;
 	private int internalOrder;
 	private int order;
+	
+	public ReservationStatus() {}
 	
 	public ReservationStatus(Reservation reservation) {
 		this.reservation = reservation;
