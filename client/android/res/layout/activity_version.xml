@@ -8,12 +8,12 @@
         android:id="@+id/lblVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lable_version" android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:text="lable_version" android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
         android:id="@+id/lblVerDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/version_information" />
+        android:text="version_information" />
 
 </LinearLayout>

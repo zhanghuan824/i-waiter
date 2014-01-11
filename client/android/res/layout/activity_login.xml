@@ -8,7 +8,7 @@
         android:id="@+id/lblName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_name" />
+        android:text="user_name" />
 
     <EditText
         android:id="@+id/txtName"
@@ -23,7 +23,7 @@
         android:id="@+id/lblPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/password" />
+        android:text="password" />
 
     <EditText
         android:id="@+id/txtPassword"
@@ -36,17 +36,17 @@
         android:id="@+id/chkAutologin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/auto_login" />
+        android:text="auto_login" />
 
     <CheckBox
         android:id="@+id/chkRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/remember_password" />
+        android:text="remember_password" />
     
     <Button android:id="@+id/btnLogin" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"/>
+        android:text="login"/>
 
 </LinearLayout>
