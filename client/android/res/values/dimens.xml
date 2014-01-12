@@ -24,4 +24,6 @@
     <dimen name="normal_padding_length">10.0dip</dimen>
     <dimen name="no_result_padding_length">50.0dip</dimen>
     
+    <dimen name="standard_padding">8dip</dimen>
+  	<dimen name="half_padding">4dip</dimen>
 </resources>
