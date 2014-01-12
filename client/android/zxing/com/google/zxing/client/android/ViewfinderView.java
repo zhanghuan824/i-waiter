@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -45,6 +46,10 @@ public final class ViewfinderView extends View {
   private static final int CURRENT_POINT_OPACITY = 0xA0;
   private static final int MAX_RESULT_POINTS = 20;
   private static final int POINT_SIZE = 6;
+  private static final int SPEED_DISTANCE = 5;
+  //扫描框中的中间线与扫描框左右的间隙
+  private static final int MIDDLE_LINE_PADDING = 5;
+  private static final int MIDDLE_LINE_WIDTH = 2;
 
   private CameraManager cameraManager;
   private final Paint paint;
@@ -56,6 +61,10 @@ public final class ViewfinderView extends View {
   private int scannerAlpha;
   private List<ResultPoint> possibleResultPoints;
   private List<ResultPoint> lastPossibleResultPoints;
+  
+  private int slideTop; //中间滑动线的最顶端位置
+  private int slideBottom; //中间滑动线的最低端位置
+  private boolean isFirst; 
 
   // This constructor is used when the class is built from an XML resource.
   public ViewfinderView(Context context, AttributeSet attrs) {
@@ -87,6 +96,13 @@ public final class ViewfinderView extends View {
     if (frame == null || previewFrame == null) {
       return;
     }
+    
+    if(!isFirst) {
+    	isFirst = true;
+    	slideTop = frame.top;
+    	slideBottom = frame.bottom;
+    }
+    
     int width = canvas.getWidth();
     int height = canvas.getHeight();
 
@@ -96,15 +112,45 @@ public final class ViewfinderView extends View {
     canvas.drawRect(0, frame.top, frame.left, frame.bottom + 1, paint);
     canvas.drawRect(frame.right + 1, frame.top, width, frame.bottom + 1, paint);
     canvas.drawRect(0, frame.bottom + 1, width, height, paint);
-
+    
     if (resultBitmap != null) {
       // Draw the opaque result bitmap over the scanning rectangle
       paint.setAlpha(CURRENT_POINT_OPACITY);
       canvas.drawBitmap(resultBitmap, null, frame, paint);
     } else {
-
+    	int strokeWidth = 0;
+        float strokeLineWidth = 3.0f;
+        int length = 15;
+        float strokeWidthBackup = paint.getStrokeWidth();
+        paint.setColor(Color.GREEN);
+        paint.setStrokeWidth(strokeLineWidth);
+        
+        canvas.drawLine(frame.left - strokeWidth, frame.top - strokeWidth, frame.left + length, frame.top - strokeWidth, paint);
+        canvas.drawLine(frame.left - strokeWidth, frame.top - strokeWidth, frame.left - strokeWidth, frame.top + length, paint);
+        
+        canvas.drawLine(frame.right - length, frame.top - strokeWidth, frame.right + strokeWidth, frame.top - strokeWidth, paint);
+        canvas.drawLine(frame.right + strokeWidth, frame.top - strokeWidth, frame.right + strokeWidth, frame.top + length, paint);
+        
+        canvas.drawLine(frame.left - strokeWidth, frame.bottom - length, frame.left - strokeWidth, frame.bottom + strokeWidth, paint);
+        canvas.drawLine(frame.left - strokeWidth, frame.bottom + strokeWidth, frame.left + length, frame.bottom + strokeWidth, paint);
+        
+        canvas.drawLine(frame.right + strokeWidth, frame.bottom - length, frame.right + strokeWidth, frame.bottom + strokeWidth, paint);
+        canvas.drawLine(frame.right - length, frame.bottom + strokeWidth, frame.right + strokeWidth, frame.bottom + strokeWidth, paint);
+        
+        //restore paint
+        paint.setStrokeWidth(strokeWidthBackup);
+    	
+        //绘制中间的线，每次刷新界面，中间的线往下移动SPEED_DISTANCE
+        slideTop += SPEED_DISTANCE;
+        if(slideTop >= frame.bottom) {
+        	slideTop = frame.top;
+        }
+        canvas.drawRect(frame.left + MIDDLE_LINE_PADDING, slideTop - MIDDLE_LINE_WIDTH/2, 
+        		frame.right - MIDDLE_LINE_PADDING, slideTop + MIDDLE_LINE_WIDTH/2, paint);
+    	/*
       // Draw a red "laser scanner" line through the middle to show decoding is active
-      paint.setColor(laserColor);
+      //paint.setColor(laserColor);
+      paint.setColor(Color.GREEN);
       paint.setAlpha(SCANNER_ALPHA[scannerAlpha]);
       scannerAlpha = (scannerAlpha + 1) % SCANNER_ALPHA.length;
       int middle = frame.height() / 2 + frame.top;
@@ -116,7 +162,8 @@ public final class ViewfinderView extends View {
       List<ResultPoint> currentPossible = possibleResultPoints;
       List<ResultPoint> currentLast = lastPossibleResultPoints;
       int frameLeft = frame.left;
-      int frameTop = frame.top;
+      int frameTop = frame.top; */
+      /* zhanghuan remove this to prevent drawing circle
       if (currentPossible.isEmpty()) {
         lastPossibleResultPoints = null;
       } else {
@@ -143,7 +190,7 @@ public final class ViewfinderView extends View {
                               radius, paint);
           }
         }
-      }
+      } */
 
       // Request another update at the animation interval, but only repaint the laser line,
       // not the entire viewfinder mask.
