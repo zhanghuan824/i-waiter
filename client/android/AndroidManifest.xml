@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.paipai.client"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" android:installLocation="auto">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" android:permission="android.permission.INSTALL_PACKAGES">
         <activity
             android:name="com.paipai.client.MainActivity"
             android:label="爱排排" >
@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="FindingActivity"/>
+        <activity android:name="WaitingActivity"></activity>
+        <activity android:name="LoginActivity"></activity>
+        <activity android:name="RegisterActivity"></activity>
+        <activity android:name="VersionActivity"></activity>
     </application>
 
 </manifest>
