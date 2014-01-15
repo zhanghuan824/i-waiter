@@ -10,8 +10,9 @@
     <string name="login">登陆</string>
     <string name="lable_version">版本信息:</string>
     <string name="version_information">Ver 0.1(内部研发版)</string>
+    <string name="navigate_waiting">排排</string>
+    <string name="navigate_finding">发现</string>
     <string name="title_activity_capture">CaptureActivity</string>
-    <string name="hello_world">Hello world!</string>
     
     <string name="app_picker_name">Applications</string>
   <string name="bookmark_picker_name">Bookmarks</string>
