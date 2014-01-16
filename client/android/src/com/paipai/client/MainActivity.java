@@ -17,6 +17,8 @@ public class MainActivity extends TabActivity implements
 
 	private Intent findingIntent;
 	private Intent waitingIntent;
+	private Intent friendsIntent;
+	private Intent settingsIntent;
 	private TabHost tabHost;
 
 	@Override
@@ -33,6 +35,8 @@ public class MainActivity extends TabActivity implements
 				.setOnCheckedChangeListener(this);
 		this.findingIntent = new Intent(this, FindingActivity.class);
 		this.waitingIntent = new Intent(this, WaitingActivity.class);
+		this.friendsIntent = new Intent(this, FindingActivity.class);
+		this.settingsIntent = new Intent(this, WaitingActivity.class);
 		setupIntent();
 	}
 
@@ -45,6 +49,12 @@ public class MainActivity extends TabActivity implements
 				break;
 			case R.id.radio_button1:
 				this.tabHost.setCurrentTabByTag("Waiting");
+				break;
+			case R.id.radio_button2:
+				this.tabHost.setCurrentTabByTag("Friends");
+				break;
+			case R.id.radio_button3:
+				this.tabHost.setCurrentTabByTag("Settings");
 				break;
 			}
 		}
@@ -60,8 +70,10 @@ public class MainActivity extends TabActivity implements
 
 	private void setupIntent() {
 		this.tabHost = getTabHost();//(TabHost) findViewById(R.id.TabHost1);
-		tabHost.addTab(buildTabSpec("Finding", R.string.navigate_finding,R.drawable.icon_1_n, this.findingIntent));
-		tabHost.addTab(buildTabSpec("Waiting", R.string.navigate_waiting,R.drawable.icon_2_n, this.waitingIntent));
+		tabHost.addTab(buildTabSpec("Finding", R.string.navigate_finding,R.drawable.finding, this.findingIntent));
+		tabHost.addTab(buildTabSpec("Waiting", R.string.navigate_waiting,R.drawable.waiting, this.waitingIntent));
+		tabHost.addTab(buildTabSpec("Friends", R.string.navigate_friends,R.drawable.finding, this.findingIntent));
+		tabHost.addTab(buildTabSpec("Settings", R.string.navigate_settings,R.drawable.waiting, this.waitingIntent));
 	}
 
 	private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon,
