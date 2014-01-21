@@ -80,13 +80,16 @@
 		    </intent-filter>
             
         </activity>
+        <activity android:name="LoginActivity"></activity>
+        <activity android:name="VersionActivity"></activity>
+         <activity android:name="SettingsActivity"/>
         <!--
         <activity android:name="FindingActivity"/>
         <activity android:name="WaitingActivity"></activity>
-        <activity android:name="LoginActivity"></activity>
+        
         <activity android:name="RegisterActivity"></activity>
-        <activity android:name="VersionActivity"></activity>
-        <activity android:name="SettingsActivity"/>
+        
+       
         <activity android:name="FriendsActivity"/>-->
         <activity android:name="com.paipai.client.MainActivity">            
               <intent-filter>

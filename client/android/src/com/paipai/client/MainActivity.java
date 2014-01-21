@@ -52,6 +52,7 @@ public class MainActivity extends FragmentActivity
 		
 		tabHost.addTab(buildTabSpec("Finding", R.string.navigate_finding,R.drawable.finding, this.findingIntent),FindingFragment.class,null);
 		tabHost.addTab(buildTabSpec("Waiting", R.string.navigate_waiting,R.drawable.waiting, this.waitingIntent),WaitingFragment.class,null);
+		tabHost.addTab(buildTabSpec("Friends", R.string.navigate_friends,R.drawable.friends, this.friendsIntent),FriendsFragment.class,null);
 		tabHost.addTab(buildTabSpec("Settings", R.string.navigate_settings,R.drawable.waiting, this.settingsIntent),SettingsFragment.class,null);
 	}
 
