@@ -16,7 +16,7 @@
     <string name="title_activity_capture">CaptureActivity</string>
     <string name="introduce_title">介绍:</string>
     <string name="evaluation">评价</string>
-    <string name="average_price">均价:{0}</string>
+    <string name="average_price">均价:</string>
     <string name="app_picker_name">Applications</string>
   <string name="bookmark_picker_name">Bookmarks</string>
   <string name="button_add_calendar">Add to calendar</string>
